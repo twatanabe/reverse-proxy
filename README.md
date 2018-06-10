@@ -3,13 +3,17 @@
 Traefik networking lab for routing reverse proxy access to docker-machine deployed projects on global DNS Droplet server. Essentially structures network layer that connects xxx.site.com and yyy.site.com sub-domains to associated container apps.
 
 
-![alt text](https://raw.githubusercontent.com/code-badger/reverse-proxy/master/diagram.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/code-badger/reverse-proxy/master/diagram.png">
+</p>
 
 
 ### Requirements
-- Droplet Server
-- docker-compose
-- docker-machine
+- Digital Ocean - Droplet Server
+- [Docker Compose](https://docs.docker.com/compose/overview/)
+- [Docker Machine](https://docs.docker.com/machine/overview/)
+- Traefik
+- Web App Container for access test, here using Go-Hello and Python-Hello
 
 ## How to use
 
