@@ -1,6 +1,6 @@
 version: '3'
 services:
-    gohello:
+    go-hello:
         build: .
         image: codebadger/go-hello
         networks:
