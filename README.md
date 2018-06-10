@@ -1,8 +1,8 @@
 # Traefik Reverse Proxy Lab
 
-Utilize Traefik secure routing to navigate sub-domain web access to web app containers. Essencially structures network layer that connects abc.domain.com and xyz.domain.com accesses to associated web app pages.
+Utilize Traefik secure routing to navigate sub-domain web access to individual web app containers. Essencially structures network layer that connects abc.domain.com and xyz.domain.com accesses to associated page.
 
-
+<br>
 <p align="center">
   <img src="https://raw.githubusercontent.com/code-badger/reverse-proxy/master/diagram.png">
 </p>
@@ -32,9 +32,9 @@ docker-compose up
 
 ## Ports
 
-Traefik: 8080
-GoHello: 3000
-PythonHello: 5000
+- Traefik: 8080
+- GoHello: 3000
+- PythonHello: 5000
 
 ## Apply Traefik Routing
 
@@ -43,7 +43,7 @@ Use following config for routing apps using Traefik network
 ```
 version: '3'
 services:
-    gohello:
+    go-hello:
         build: .
         image: codebadger/gohello
         networks:
@@ -51,8 +51,8 @@ services:
             - default
         labels:
             - "traefik.enable=true"
-            - "traefik.backend=gohello"
-            - "traefik.frontend.rule=Host:gohello.wtakumi.io"
+            - "traefik.backend=go-hello"
+            - "traefik.frontend.rule=Host:go-hello.domain.com"
             - "traefik.docker.network=traefik_reverseproxy"
         ports:
         - "3000:3000"

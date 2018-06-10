@@ -1,13 +1,14 @@
 version: '3'
 services:
-    pythonhello:
+    python-hello:
         build: .
+        image: codebadger/python-hello
         networks:
             - reverseproxy
             - default
         labels:
             - "traefik.enable=true"
-            - "traefik.backend=pythonhello"
+            - "traefik.backend=python-hello"
             - "traefik.frontend.rule=Host:python-hello.wtakumi.io"
             - "traefik.docker.network=traefik_reverseproxy"
         ports:
