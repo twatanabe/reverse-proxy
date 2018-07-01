@@ -1,4 +1,4 @@
-# Traefik Reverse Proxy Lab
+# Traefik Reverse Proxy
 
 Utilize Traefik secure routing to navigate sub-domain web access to individual web app containers. Essencially structures network layer that connects abc.domain.com and xyz.domain.com accesses to associated page.
 
@@ -45,7 +45,7 @@ version: '3'
 services:
     go-hello:
         build: .
-        image: codebadger/gohello
+        image: codebadger/go-hello
         networks:
             - reverseproxy
             - default
