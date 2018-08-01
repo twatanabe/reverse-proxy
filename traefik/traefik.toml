@@ -1,6 +1,10 @@
 # defaultEntryPoints must be at the top because it should not be in any table below
 defaultEntryPoints = ["http", "https"]
 
+#debug = true
+#logLevel = "TRACE"
+
+
 [web]
 # Port for the status page
 address = ":8080"
@@ -22,13 +26,15 @@ address = ":443"
 
 # Enable ACME (Let's Encrypt): automatic SSL
 [acme]
-# caServer = "https://acme-staging.api.letsencrypt.org/directory"
+#caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 email = ""
 storage = "acme.json"
 entryPoint = "https"
 onDemand = false
-OnHostRule = true
-
+onHostRule = true
+#acmeLogging = true
+[acme.httpChallenge]
+entryPoint = "http"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
