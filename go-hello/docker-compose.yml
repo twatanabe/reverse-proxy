@@ -11,8 +11,6 @@ services:
             - "traefik.backend=go-hello"
             - "traefik.frontend.rule=Host:go-hello.wtakumi.io"
             - "traefik.docker.network=traefik_reverseproxy"
-        ports:
-        - "3000:3000"
 
 networks:
     reverseproxy:
