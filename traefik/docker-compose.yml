@@ -3,7 +3,7 @@ version: '3.2'
 services:
   traefik:
     build: .
-    command: --logLevel=DEBUG
+    command: --web --web.metrics.prometheus --web.metrics.prometheus.buckets="0.1,0.3,1.2,5.0" --docker --docker.domain=docker.localhost --logLevel=DEBUG
     ports:
       - "80:80"
       - "443:443"
@@ -13,6 +13,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - reverseproxy
+      - prometheus
     cap_drop:
       - all
     cap_add:
@@ -21,3 +22,7 @@ services:
 networks:
   reverseproxy:
     driver: bridge
+  prometheus:
+    external:
+      name: prometheus_back-tier
+
