@@ -7,6 +7,9 @@ volumes:
 networks:
   front-tier:
   back-tier:
+  reverseproxy:
+    external:
+      name: traefik_reverseproxy
 
 services:
   prometheus:
@@ -31,6 +34,12 @@ services:
       - cadvisor
     networks:
       - back-tier
+      - reverseproxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=prometheus"
+      - "traefik.frontend.rule=Host:prom.wtakumi.io"
+      - "traefik.docker.network=traefik_reverseproxy"
     restart: always
 #    deploy:
 #      placement:
@@ -52,6 +61,12 @@ services:
       - 9100:9100
     networks:
       - back-tier
+      - reverseproxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=node-exporter"
+      - "traefik.frontend.rule=Host:node.wtakumi.io"
+      - "traefik.docker.network=traefik_reverseproxy"
     restart: always
     # deploy:
     #   mode: global
@@ -83,6 +98,12 @@ services:
       - 8081:8080
     networks:
       - back-tier
+      - reverseproxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=cadvisor"
+      - "traefik.frontend.rule=Host:cadvisor.wtakumi.io"
+      - "traefik.docker.network=traefik_reverseproxy"
     restart: always
     # deploy:
     #   mode: global
@@ -102,5 +123,10 @@ services:
     networks:
       - back-tier
       - front-tier
+      - reverseproxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=grafana"
+      - "traefik.frontend.rule=Host:grafana.wtakumi.io"
+      - "traefik.docker.network=traefik_reverseproxy"
     restart: always
-

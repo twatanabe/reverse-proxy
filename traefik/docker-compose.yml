@@ -25,4 +25,3 @@ networks:
   prometheus:
     external:
       name: prometheus_back-tier
-
