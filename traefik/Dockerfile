@@ -1,9 +1,7 @@
-FROM traefik:v1.6.2-alpine
+FROM traefik:v1.7.4-alpine
 ADD traefik.toml .
 
 #RUN touch acme.json
 #RUN chmod 600 acme.json
 
-EXPOSE 80
 EXPOSE 8080
-EXPOSE 443

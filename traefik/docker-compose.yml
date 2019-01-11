@@ -18,6 +18,11 @@ services:
       - all
     cap_add:
       - net_bind_service
+    labels:
+      - "traefik.port=8080"
+      - "traefik.enable=true"
+      - "traefik.backend=traefik"
+      - "traefik.frontend.rule=Host:traefik.${DOMAIN_NAME}"
 
 networks:
   reverseproxy:
