@@ -15,8 +15,8 @@ address = ":8080"
 # http should be redirected to https
 [entryPoints.http]
 address = ":80"
-[entryPoints.http.redirect]
-entryPoint = "https"
+# [entryPoints.http.redirect]
+# entryPoint = "https"
 
 # https is the default
 [entryPoints.https]
@@ -24,17 +24,17 @@ address = ":443"
 
 [entryPoints.https.tls]
 
-# Enable ACME (Let's Encrypt): automatic SSL
-[acme]
-caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
-email = ""
-storage = "acme.json"
-entryPoint = "https"
-onDemand = false
-onHostRule = true
-#acmeLogging = true
-[acme.httpChallenge]
-entryPoint = "http"
+# Enable ACME (Let's Encrypt): automatic SS
+# [acme]
+# caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+# email = ""
+# storage = "acme.json"
+# entryPoint = "https"
+# onDemand = false
+# onHostRule = true
+# #acmeLogging = true
+# [acme.httpChallenge]
+# entryPoint = "http"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
